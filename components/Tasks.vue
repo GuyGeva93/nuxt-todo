@@ -26,7 +26,7 @@ export default {
 		return {
 			editedTask: {
 				id: this.task.id, 
-				newContent: null
+				newContent: this.task.content
 			},
 			edit: false,
 		}
@@ -43,6 +43,7 @@ export default {
 		},
 		editTask() {
 			this.$store.dispatch('editTask', this.editedTask);
+			this.toggleEdit();
 		}
 	},
 };
