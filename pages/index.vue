@@ -23,14 +23,11 @@ export default {
 	components: {
 		Options,
 	},
-	// mounted() {
-	// 	this.tasks = this.$store.getters.getTasks;
-	// },
-  computed: {
-    tasks() {
-      return this.$store.getters.getTasks;
-    }
-  },
+	computed: {
+		tasks() {
+			return this.$store.getters.getTasks;
+		}
+	},
 	data() {
 		return {
 			newTask: getEmptyTask(),
@@ -38,6 +35,10 @@ export default {
 	},
 	methods: {
 		addTask() {
+			if (!this.newTask.content.length) {
+				console.log('Cannot add empty task');
+				return;
+			}
 			this.$store.dispatch('addTask', this.newTask);
 			this.newTask = getEmptyTask();
 		},
